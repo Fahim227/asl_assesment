@@ -8,7 +8,9 @@ import 'package:asl_assesment/features/items_list/data/data_source/remote/data_s
 import 'package:asl_assesment/core/utils/mapper.dart';
 
 import 'package:asl_assesment/features/items_list/data/model/post_model.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: PostsRepository)
 class PostsRepositoryImpl implements PostsRepository {
   final PostsDataSource _dataSource;
   final Mapper<List<PostModel>, List<PostEntity>> _postModelToEntityMapper;

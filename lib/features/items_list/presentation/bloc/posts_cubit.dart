@@ -13,8 +13,34 @@ class PostsCubit extends Cubit<PostsState> {
       : _getAllPostedItems = getAllPostedItems,
         super(PostsInitial());
 
+  List<PostEntity> _allPosts = [];
+
   Future<void> getAllPostedItems() async {
+    emit(PostsLoading());
     final result = await _getAllPostedItems.call();
-    result.fold((l) => null, (allPosts) => PostsLoaded(allPosts));
+    result.fold(
+          (error) => emit(PostsErrorState(error.message)),
+          (allPosts) {
+        _allPosts = allPosts;
+        emit(PostsLoaded(allPosts));
+      },
+    );
+  }
+
+
+  void searchPosts(String query) {
+    if (state is! PostsLoaded) return;
+
+    if (query.isEmpty) {
+      emit(PostsLoaded(_allPosts));
+    } else {
+      final filtered = _allPosts
+          .where((post) =>
+      post.title.toLowerCase().contains(query.toLowerCase()) ||
+          post.body.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+
+      emit(PostsLoaded(filtered));
+    }
   }
 }
