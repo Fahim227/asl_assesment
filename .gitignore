@@ -1,13 +1,17 @@
 # Miscellaneous
 *.class
+*.lock
+!pubspec.lock
 *.log
 *.pyc
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -16,24 +20,40 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
+
+# Android Studio related
+.run/
+android/app/.cxx/
+android/.kotlin/
 
 # Flutter/Dart/Pub related
 **/doc/api/
-**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
 .packages
 .pub-cache/
 .pub/
-/build/
+build/
+.mason/
+mason-lock.json
 
-# Web related
-lib/generated_plugin_registrant.dart
+# Android related
+**/android/**/gradle-wrapper.jar
+.gradle/
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+# **/android/key.properties
+# *.jks
 
 # Symbolication related
 app.*.symbols
@@ -46,5 +66,102 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# iOS/XCode related
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata
+**/ios/.generated/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+
+# local value, files needed by developers
+report.txt
+console.txt
+
+# generated files
+*.g.dart
+*.gen.dart
+*.mocks.dart
+*.freezed.dart
+*.main.dart
+injectable.config.dart
+common_lane/files/*-generated.*
+
+#Fastlane
+android/fastlane/metadata/
+common_lane/fastlane/report.xml
+android/fastlane/README.md
+ios/fastlane/README.md
+ios/fastlane/report.xml
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!**/ios/**/default.mode1v3
+!**/ios/**/default.mode2v3
+!**/ios/**/default.pbxuser
+!**/ios/**/default.perspectivev3
+# android/playstore-sa.json
+# ios/appstore-key.p8
+# android/playstore-sa-credential.json
+# firebase-sa-credential.json
+common_lane/files/version-generated.json
+coverage/
+!coverage/junit.xml
+!coverage/cobertura.xml
+coverage.xml
+
+
 # FVM Version Cache
 .fvm/
+
+linux/*
+macos/*
+windows/*
+web/*
+untranslated_messages.txt
+
+amplify/*
+amplifyconfiguration.dart
+
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/mock-api-resources
+amplify/backend/amplify-meta.json
+amplify/backend/.temp
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end
