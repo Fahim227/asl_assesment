@@ -1,3 +1,5 @@
+import 'package:asl_assesment/features/add_item/presentation/bloc/add_item_form_cubit.dart';
+import 'package:asl_assesment/features/add_item/presentation/pages/add_item_page.dart';
 import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.dart';
 import 'package:asl_assesment/features/items_list/presentation/pages/all_items_page.dart';
 import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
@@ -34,67 +36,72 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.white,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          inputDecorationTheme: InputDecorationTheme(
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
+            scaffoldBackgroundColor: Colors.white,
+            primaryColor: Colors.white,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.deepPurple,
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(
-                color: AppColors.borderColor,
-                width: 1.0,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            inputDecorationTheme: InputDecorationTheme(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 14,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(
+                  color: AppColors.borderColor,
+                  width: 1.0,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(
+                  color: AppColors.borderColor,
+                  width: 1.0,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(
+                  color: AppColors.borderColor,
+                  width: 2.0,
+                ),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.0,
+                ),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                borderSide:
+                    const BorderSide(width: 2, color: AppColors.borderColor),
               ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(
-                color: AppColors.borderColor,
-                width: 1.0,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(
-                color: AppColors.borderColor,
-                width: 2.0,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide: const BorderSide(
-                color: Colors.red,
-                width: 1.0,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide:
-                  const BorderSide(width: 2, color: AppColors.borderColor),
-            ),
-          ),
-          textTheme: const TextTheme(
+            textTheme: const TextTheme(
               bodyText1: TextStyle(),
               bodyText2: TextStyle(fontSize: 12.0),
-            )
-        ),
+            )),
         initialRoute: '/all_items',
         routes: {
           '/all_items': (context) => BlocProvider(
                 create: (context) => sl.get<PostsCubit>()..getAllPostedItems(),
                 child: const AllPostedItemsPage(),
               ),
+          '/add_item': (context) => BlocProvider(
+                create: (context) => sl.get<AddItemFormCubit>(),
+                child: const AddItemPage(),
+              )
         },
         onGenerateRoute: (settings) {
           if (settings.name!.startsWith('/details')) {
             final postEntity = settings.arguments as PostEntity;
 
             return MaterialPageRoute(
-              builder: (_) => DetailsPage(postEntity: postEntity)
-            );
+                builder: (_) => DetailsPage(postEntity: postEntity));
           }
           return null;
         },

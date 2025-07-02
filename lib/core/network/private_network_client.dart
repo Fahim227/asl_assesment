@@ -1,6 +1,6 @@
 import 'package:asl_assesment/core/models/flavor_config.dart';
 import 'package:asl_assesment/core/network/network_client.dart';
-import 'package:asl_assesment/core/network/network_exception.dart';
+import 'package:asl_assesment/core/network/custom_exception.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -29,7 +29,7 @@ class PrivateNetworkClient extends NetworkClient {
   }
 
   @override
-  Future<Either<NetworkException, T>> get<T>(
+  Future<Either<CustomException, T>> get<T>(
     String path, {
     Map<String, dynamic>? queryParams,
     T Function(dynamic data)? parser,
@@ -39,12 +39,12 @@ class PrivateNetworkClient extends NetworkClient {
       final data = parser != null ? parser(response.data) : response.data;
       return Right(data);
     } catch (e) {
-      return Left(NetworkException.fromDioError(e));
+      return Left(CustomException.fromDioError(e));
     }
   }
 
   @override
-  Future<Either<NetworkException, T>> post<T>(
+  Future<Either<CustomException, T>> post<T>(
     String path, {
     dynamic data,
     T Function(dynamic data)? parser,
@@ -54,7 +54,7 @@ class PrivateNetworkClient extends NetworkClient {
       final parsed = parser != null ? parser(response.data) : response.data;
       return Right(parsed);
     } catch (e) {
-      return Left(NetworkException.fromDioError(e));
+      return Left(CustomException.fromDioError(e));
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:asl_assesment/core/network/network_exception.dart';
+import 'package:asl_assesment/core/network/custom_exception.dart';
 import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
 import 'package:asl_assesment/features/items_list/domain/repository/post_repository.dart';
 import 'package:dartz/dartz.dart';
@@ -18,7 +18,7 @@ class PostsRepositoryImpl implements PostsRepository {
   PostsRepositoryImpl(this._dataSource, this._postModelToEntityMapper);
 
   @override
-  Future<Either<NetworkException, List<PostEntity>>> getAllPosts() async {
+  Future<Either<CustomException, List<PostEntity>>> getAllPosts() async {
     final result = await _dataSource.getAllPosts();
     return result.fold((error) => Left(error), (data) {
       final postEntity = _postModelToEntityMapper.map(data);

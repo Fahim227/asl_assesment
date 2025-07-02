@@ -3,6 +3,6 @@ import 'package:dartz/dartz.dart';
 
 import 'package:asl_assesment/core/network/custom_exception.dart';
 
-abstract class PostsDataSource {
-  Future<Either<CustomException, List<PostModel>>> getAllPosts();
+abstract class AddItemDataSource {
+  Future<Either<CustomException, PostModel>> postItem(PostModel postModel);
 }

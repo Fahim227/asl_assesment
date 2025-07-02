@@ -24,17 +24,23 @@ class _AllItemsPageState extends State<AllPostedItemsPage> {
           style: TextStyle(fontSize: 16),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        onPressed: () => Navigator.pushNamed(context, "/add_item"),
+        child: const Icon(Icons.add),
+      ),
       body: Column(
         children: [
           Column(
             children: [
               const SizedBox(height: 8),
-               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                 child: CommonInputField(
                   hintText: "Search",
                   keyboardType: TextInputType.number,
-                  onChanged: (query){
+                  onChanged: (query) {
                     context.read<PostsCubit>().searchPosts(query);
                   },
                 ),
@@ -63,34 +69,40 @@ class _AllItemsPageState extends State<AllPostedItemsPage> {
                   return const Center(child: Text("No data found"));
                 }
 
-                return RefreshIndicator( onRefresh: () async {
-                 return  Future.delayed(const Duration(seconds: 1)).then((value) => context.read<PostsCubit>().getAllPostedItems());
-
-                },child: ListView.separated(
-                  itemCount: posts.length,
-                  itemBuilder: (context, index) {
-                    final postEntity = posts[index];
-
-                    return InkWell(
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        '/details',
-                        arguments: postEntity,
-                      ),
-                      child: PostTile(title: postEntity.title,description: postEntity.body,),
-                    );
-
+                return RefreshIndicator(
+                  onRefresh: () async {
+                    return Future.delayed(const Duration(seconds: 1)).then(
+                        (value) =>
+                            context.read<PostsCubit>().getAllPostedItems());
                   },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return Divider(
-                      color: AppColors.dividerColor,
-                      thickness: 2,
-                      indent: 1,
-                      endIndent: 1,
-                      height: 1,
-                    );
-                  },
-                ),);
+                  child: ListView.separated(
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) {
+                      final postEntity = posts[index];
+
+                      return InkWell(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          '/details',
+                          arguments: postEntity,
+                        ),
+                        child: PostTile(
+                          title: postEntity.title,
+                          description: postEntity.body,
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Divider(
+                        color: AppColors.dividerColor,
+                        thickness: 2,
+                        indent: 1,
+                        endIndent: 1,
+                        height: 1,
+                      );
+                    },
+                  ),
+                );
               }
 
               return const Center(child: Text("No data"));

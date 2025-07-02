@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class PostTile extends StatelessWidget {
   final String title;
   final String description;
@@ -9,9 +7,8 @@ class PostTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      padding: const EdgeInsets.symmetric(
-          vertical: 8, horizontal: 12),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
@@ -31,9 +28,7 @@ class PostTile extends StatelessWidget {
           Text(
             description,
             style: const TextStyle(
-                fontSize: 12,
-                color: Colors.black,
-                fontWeight: FontWeight.w500),
+                fontSize: 12, color: Colors.black, fontWeight: FontWeight.w500),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           )

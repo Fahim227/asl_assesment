@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:asl_assesment/core/network/network_client.dart';
-import 'package:asl_assesment/core/network/network_exception.dart';
+import 'package:asl_assesment/core/network/custom_exception.dart';
 
 @Injectable(as: PostsDataSource)
 class PostsDataSourceImpl implements PostsDataSource {
@@ -15,7 +15,7 @@ class PostsDataSourceImpl implements PostsDataSource {
   final String path = "/posts/";
 
   @override
-  Future<Either<NetworkException, List<PostModel>>> getAllPosts() async {
+  Future<Either<CustomException, List<PostModel>>> getAllPosts() async {
     return await _client.get(path,
         parser: (data) =>
             (data as List).map((e) => PostModel.fromJson(e)).toList());

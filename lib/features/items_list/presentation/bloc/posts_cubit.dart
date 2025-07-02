@@ -19,14 +19,13 @@ class PostsCubit extends Cubit<PostsState> {
     emit(PostsLoading());
     final result = await _getAllPostedItems.call();
     result.fold(
-          (error) => emit(PostsErrorState(error.message)),
-          (allPosts) {
+      (error) => emit(PostsErrorState(error.message)),
+      (allPosts) {
         _allPosts = allPosts;
         emit(PostsLoaded(allPosts));
       },
     );
   }
-
 
   void searchPosts(String query) {
     if (state is! PostsLoaded) return;
@@ -36,8 +35,8 @@ class PostsCubit extends Cubit<PostsState> {
     } else {
       final filtered = _allPosts
           .where((post) =>
-      post.title.toLowerCase().contains(query.toLowerCase()) ||
-          post.body.toLowerCase().contains(query.toLowerCase()))
+              post.title.toLowerCase().contains(query.toLowerCase()) ||
+              post.body.toLowerCase().contains(query.toLowerCase()))
           .toList();
 
       emit(PostsLoaded(filtered));
