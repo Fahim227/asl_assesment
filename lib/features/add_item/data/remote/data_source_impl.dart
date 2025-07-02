@@ -1,3 +1,5 @@
+import 'package:asl_assesment/core/models/post_model/post_base_model.dart';
+import 'package:asl_assesment/features/add_item/data/model/post_response_model.dart';
 import 'package:asl_assesment/features/add_item/data/remote/data_source.dart';
 import 'package:asl_assesment/features/items_list/data/model/post_model.dart';
 import 'package:dartz/dartz.dart';
@@ -15,12 +17,12 @@ class AddItemDataSourceImpl implements AddItemDataSource {
   final String path = "/posts/";
 
   @override
-  Future<Either<CustomException, PostModel>> postItem(
-      PostModel postModel) async {
+  Future<Either<CustomException, PostResponseModel>> postItem(
+      PostBaseModel postModel) async {
     return await _client.post(
       path,
       data: postModel.toJson(),
-      parser: (data) => PostModel.fromJson(data),
+      parser: (data) => PostResponseModel.fromJson(data),
     );
   }
 }

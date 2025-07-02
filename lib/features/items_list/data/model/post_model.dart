@@ -1,23 +1,19 @@
+import 'package:asl_assesment/core/models/post_model/post_base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'post_model.g.dart';
 
-@JsonSerializable()
-class PostModel {
+@JsonSerializable(createToJson: false)
+class PostModel extends PostBaseModel {
   final int userId;
   final int id;
-  final String title;
-  final String body;
 
-  const PostModel({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
-  });
+  const PostModel(
+      {required this.userId,
+      required this.id,
+      required super.title,
+      required super.body});
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
       _$PostModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostModelToJson(this);
 }
