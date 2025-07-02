@@ -1,11 +1,13 @@
 import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.dart';
 import 'package:asl_assesment/features/items_list/presentation/pages/all_items_page.dart';
+import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/di/di.dart';
 import 'core/models/flavor_config.dart';
 import 'core/utils/app_colors.dart';
+import 'features/items_list/domain/entity/post_entity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,19 +76,10 @@ class MyApp extends StatelessWidget {
                   const BorderSide(width: 2, color: AppColors.borderColor),
             ),
           ),
-          /*textTheme: TextTheme(
+          textTheme: const TextTheme(
               bodyText1: TextStyle(),
               bodyText2: TextStyle(fontSize: 12.0),
-            )*/
-          //
-          // the below code is getting fonts from http
-          //textTheme: GoogleFonts.roboto(),
-          // textTheme: GoogleFonts.sourceSansProTextTheme(textTheme).copyWith(
-          //   bodyText1:
-          //       GoogleFonts.sourceSansPro(textStyle: textTheme.bodyText1),
-          //   bodyText2: GoogleFonts.sourceSansPro(
-          //       textStyle: textTheme.bodyText2, fontSize: 12),
-          // ),
+            )
         ),
         initialRoute: '/all_items',
         routes: {
@@ -94,6 +87,16 @@ class MyApp extends StatelessWidget {
                 create: (context) => sl.get<PostsCubit>()..getAllPostedItems(),
                 child: const AllPostedItemsPage(),
               ),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name!.startsWith('/details')) {
+            final postEntity = settings.arguments as PostEntity;
+
+            return MaterialPageRoute(
+              builder: (_) => DetailsPage(postEntity: postEntity)
+            );
+          }
+          return null;
         },
       ),
     );

@@ -69,8 +69,17 @@ class _AllItemsPageState extends State<AllPostedItemsPage> {
                 },child: ListView.separated(
                   itemCount: posts.length,
                   itemBuilder: (context, index) {
-                    final post = posts[index];
-                    return PostTile(title: post.title,description: post.body,);
+                    final postEntity = posts[index];
+
+                    return InkWell(
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        '/details',
+                        arguments: postEntity,
+                      ),
+                      child: PostTile(title: postEntity.title,description: postEntity.body,),
+                    );
+
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return Divider(
