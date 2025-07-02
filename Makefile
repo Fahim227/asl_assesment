@@ -22,3 +22,6 @@ clean-get:
 dart-fix-format:
 	fvm dart fix --apply . &&\
 	fvm dart format .
+
+clean-runner-build:
+	make clean-get && make runner-build

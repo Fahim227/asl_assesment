@@ -60,7 +60,7 @@ class _AllItemsPageState extends State<AllPostedItemsPage> {
                 final posts = state.allPosts;
 
                 if (posts.isEmpty) {
-                  return const Center(child: Text("No data"));
+                  return const Center(child: Text("No data found"));
                 }
 
                 return RefreshIndicator( onRefresh: () async {
