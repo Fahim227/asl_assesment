@@ -2,6 +2,7 @@ import 'package:asl_assesment/features/add_item/presentation/bloc/add_item_form_
 import 'package:asl_assesment/features/add_item/presentation/pages/add_item_page.dart';
 import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.dart';
 import 'package:asl_assesment/features/items_list/presentation/pages/all_items_page.dart';
+import 'package:asl_assesment/features/post_details/presentation/bloc/post_details_cubit.dart';
 import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,23 +86,27 @@ class MyApp extends StatelessWidget {
               bodyText1: TextStyle(),
               bodyText2: TextStyle(fontSize: 12.0),
             )),
-        initialRoute: '/all_items',
+        initialRoute: '/',
         routes: {
-          '/all_items': (context) => BlocProvider(
+          '/': (context) => BlocProvider(
                 create: (context) => sl.get<PostsCubit>()..getAllPostedItems(),
                 child: const AllPostedItemsPage(),
               ),
           '/add_item': (context) => BlocProvider(
                 create: (context) => sl.get<AddItemFormCubit>(),
                 child: const AddItemPage(),
-              )
+              ),
         },
         onGenerateRoute: (settings) {
           if (settings.name!.startsWith('/details')) {
-            final postEntity = settings.arguments as PostEntity;
+            final postId = settings.arguments as String;
 
             return MaterialPageRoute(
-                builder: (_) => DetailsPage(postEntity: postEntity));
+                builder: (_) => BlocProvider(
+                      create: (context) =>
+                          sl.get<PostDetailsCubit>()..getPostDetails(postId),
+                      child: const DetailsPage(),
+                    ));
           }
           return null;
         },

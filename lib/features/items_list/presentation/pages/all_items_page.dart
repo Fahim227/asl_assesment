@@ -84,7 +84,7 @@ class _AllItemsPageState extends State<AllPostedItemsPage> {
                         onTap: () => Navigator.pushNamed(
                           context,
                           '/details',
-                          arguments: postEntity,
+                          arguments: postEntity.id.toString(),
                         ),
                         child: PostTile(
                           title: postEntity.title,
