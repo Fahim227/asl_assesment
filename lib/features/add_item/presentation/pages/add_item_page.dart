@@ -1,7 +1,7 @@
 import 'package:asl_assesment/core/widgets/common_button.dart';
 import 'package:asl_assesment/core/widgets/common_input_field_with_title.dart';
+import 'package:asl_assesment/features/add_item/domain/entity/post_response_entity.dart';
 import 'package:asl_assesment/features/add_item/presentation/bloc/add_item_form_cubit.dart';
-import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -82,9 +82,8 @@ class _AddItemPageState extends State<AddItemPage> {
             ),
             onTap: () async {
               isLoading.value = true;
-              final postEntity = PostEntity(
-                  userId: 1,
-                  id: 1,
+              final postEntity = PostLocalEntity(
+                  id: DateTime.now().millisecondsSinceEpoch,
                   title: titleController.text,
                   body: bodyController.text);
               await context.read<AddItemFormCubit>().postItem(postEntity);

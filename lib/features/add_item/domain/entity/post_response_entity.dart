@@ -1,11 +1,11 @@
-import 'package:asl_assesment/core/entity/post_base_entity.dart';
-
-class PostResponseEntity extends PostBaseEntity {
+class PostLocalEntity {
   final int id;
+  final String title;
+  final String body;
 
-  const PostResponseEntity({
+  const PostLocalEntity({
     required this.id,
-    required super.title,
-    required super.body,
+    required this.title,
+    required this.body,
   });
 }

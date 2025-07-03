@@ -1,11 +1,8 @@
 import 'package:asl_assesment/core/network/custom_exception.dart';
 import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
-import 'package:asl_assesment/features/items_list/domain/repository/post_repository.dart';
 import 'package:asl_assesment/features/post_details/data/data_source/remote/post_details_data_source.dart';
 import 'package:asl_assesment/features/post_details/domain/repository/post_details_repository.dart';
 import 'package:dartz/dartz.dart';
-
-import 'package:asl_assesment/features/items_list/data/data_source/remote/data_source.dart';
 
 import 'package:asl_assesment/core/utils/mapper.dart';
 

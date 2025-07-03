@@ -1,3 +1,4 @@
+import 'package:asl_assesment/features/add_item/data/model/post_local_model.dart';
 import 'package:asl_assesment/features/add_item/presentation/bloc/add_item_form_cubit.dart';
 import 'package:asl_assesment/features/add_item/presentation/pages/add_item_page.dart';
 import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.dart';
@@ -6,20 +7,25 @@ import 'package:asl_assesment/features/post_details/presentation/bloc/post_detai
 import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'core/di/di.dart';
 import 'core/models/flavor_config.dart';
 import 'core/utils/app_colors.dart';
-import 'features/items_list/domain/entity/post_entity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final appDocDir = await getApplicationDocumentsDirectory();
+  Hive.init(appDocDir.path);
+  Hive.registerAdapter(PostLocalModelAdapter());
 
   FlavorConfig.initialize(
     flavor: Flavor.dev,
     baseUrl: 'https://jsonplaceholder.typicode.com',
   );
   await configureDependencies();
+
   runApp(const MyApp());
 }
 

@@ -1,6 +1,4 @@
 import 'package:asl_assesment/core/network/custom_exception.dart';
-import 'package:asl_assesment/features/add_item/domain/entity/post_response_entity.dart';
-import 'package:asl_assesment/features/add_item/domain/repository/add_item_repository.dart';
 import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
 import 'package:asl_assesment/features/post_details/domain/repository/post_details_repository.dart';
 import 'package:dartz/dartz.dart';

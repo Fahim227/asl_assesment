@@ -1,4 +1,3 @@
-import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
 import 'package:asl_assesment/features/post_details/presentation/bloc/post_details_cubit.dart';
 import 'package:asl_assesment/features/post_details/presentation/widget/labeled_text.dart';
 import 'package:flutter/material.dart';

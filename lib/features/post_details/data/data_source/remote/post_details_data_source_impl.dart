@@ -1,4 +1,3 @@
-import 'package:asl_assesment/features/items_list/data/data_source/remote/data_source.dart';
 import 'package:asl_assesment/features/items_list/data/model/post_model.dart';
 import 'package:asl_assesment/features/post_details/data/data_source/remote/post_details_data_source.dart';
 import 'package:dartz/dartz.dart';

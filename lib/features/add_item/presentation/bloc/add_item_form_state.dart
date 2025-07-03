@@ -11,7 +11,7 @@ class AddItemFailureState extends AddItemFormState {
 }
 
 class AddItemSuccessState extends AddItemFormState {
-  final PostEntity postEntity;
+  final PostLocalEntity postEntity;
 
   AddItemSuccessState(this.postEntity);
 }
