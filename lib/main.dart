@@ -5,6 +5,7 @@ import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.
 import 'package:asl_assesment/features/items_list/presentation/pages/all_items_page.dart';
 import 'package:asl_assesment/features/post_details/presentation/bloc/post_details_cubit.dart';
 import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
+import 'package:asl_assesment/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
@@ -12,7 +13,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'core/di/di.dart';
 import 'core/models/flavor_config.dart';
-import 'core/utils/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,56 +42,7 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            primaryColor: Colors.white,
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.deepPurple,
-            ),
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            inputDecorationTheme: InputDecorationTheme(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 14,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(
-                  color: AppColors.borderColor,
-                  width: 1.0,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(
-                  color: AppColors.borderColor,
-                  width: 1.0,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(
-                  color: AppColors.borderColor,
-                  width: 2.0,
-                ),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 1.0,
-                ),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide:
-                    const BorderSide(width: 2, color: AppColors.borderColor),
-              ),
-            ),
-            textTheme: const TextTheme(
-              bodyText1: TextStyle(),
-              bodyText2: TextStyle(fontSize: 12.0),
-            )),
+        theme: AppTheme.themeData,
         initialRoute: '/',
         routes: {
           '/': (context) => BlocProvider(
