@@ -1,6 +1,6 @@
 import 'package:asl_assesment/features/items_list/domain/entity/post_entity.dart';
 import 'package:asl_assesment/features/post_details/domain/use_case/get_post_details.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'post_details_state.dart';

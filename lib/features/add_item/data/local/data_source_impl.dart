@@ -19,6 +19,7 @@ class AddItemLocalDataSourceImpl implements AddItemDataSource {
       await postBox.put(postModel.id.toString(), postModel);
       return Right(postModel);
     } catch (e) {
+      // TODO:  change exception type from hive docs
       return Left(CustomException.fromDioError(e));
     }
   }

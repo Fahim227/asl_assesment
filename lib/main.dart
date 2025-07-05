@@ -5,7 +5,7 @@ import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.
 import 'package:asl_assesment/features/items_list/presentation/pages/all_items_page.dart';
 import 'package:asl_assesment/features/post_details/presentation/bloc/post_details_cubit.dart';
 import 'package:asl_assesment/features/post_details/presentation/pages/post_details_page.dart';
-import 'package:asl_assesment/theme/app_theme.dart';
+import 'package:asl_assesment/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
