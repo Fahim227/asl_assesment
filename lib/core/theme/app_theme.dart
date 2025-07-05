@@ -6,7 +6,7 @@ class AppTheme {
 
   static final ThemeData themeData = ThemeData(
       scaffoldBackgroundColor: Colors.white,
-      primaryColor: Colors.white,
+      primaryColor: Colors.deepPurple,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.deepPurple,
       ),
@@ -50,7 +50,7 @@ class AppTheme {
         ),
       ),
       textTheme: const TextTheme(
-        bodyText1: TextStyle(),
-        bodyText2: TextStyle(fontSize: 12.0),
+        bodyLarge: TextStyle(),
+        bodyMedium: TextStyle(fontSize: 12.0),
       ));
 }

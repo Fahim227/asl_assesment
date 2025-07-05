@@ -28,7 +28,7 @@ class CommonButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.zero,
-            primary: buttonColor,
+            // primary: buttonColor,
             elevation: 0.0,
             side: BorderSide(color: borderColor),
             //set border for the button

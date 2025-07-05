@@ -12,15 +12,23 @@ class AddItemRepositoryImpl implements AddItemRepository {
   final AddItemDataSource _dataSource;
   final Mapper<PostLocalModel, PostLocalEntity> _postResponseModelToEntity;
 
-  AddItemRepositoryImpl(this._dataSource, this._postResponseModelToEntity);
+  AddItemRepositoryImpl(
+    this._dataSource,
+    this._postResponseModelToEntity,
+  );
 
   @override
   Future<Either<CustomException, PostLocalEntity>> postItem(
       PostLocalEntity postEntity) async {
-    final result = await _dataSource.postItem(PostLocalModel(
-        id: postEntity.id, title: postEntity.title, body: postEntity.body));
+    final postLocalModel = PostLocalModel(
+      id: postEntity.id,
+      title: postEntity.title,
+      body: postEntity.body,
+    );
+    final result = await _dataSource.postItem(postLocalModel);
     return result.fold((error) => Left(error), (data) {
-      return Right(_postResponseModelToEntity.map(data));
+      final mappedPostEntity = _postResponseModelToEntity.map(data);
+      return Right(mappedPostEntity);
     });
   }
 }
