@@ -1,6 +1,6 @@
 # 📱 Flutter App
 
-A Flutter application built using **FVM-managed Flutter version 3.27.4**, supporting multiple **flavors (dev & prod)** and following a **clean folder architecture** for scalability and maintainability.
+A Flutter application built using **FVM-managed Flutter version 3.32.0**, following  **clean folder architecture** for scalability and maintainability.
 
 ---
 
