@@ -33,7 +33,7 @@ fvm flutter pub get
 
 ### ▶️ ***Run for model generations***
 ```bash
-make runner-build
+fvm flutter pub run build_runner build -d
 ```
 
 ### Project Architecture

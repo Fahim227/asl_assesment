@@ -78,8 +78,6 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.singleton<_i497.NetworkClient>(() => _i383.PrivateNetworkClient());
-    gh.factory<_i603.AddItemDataSource>(() => _i390.AddItemLocalDataSourceImpl(
-        gh<_i979.Box<_i669.PostLocalModel>>()));
     gh.factory<_i60.Mapper<List<_i413.PostModel>, List<_i439.PostEntity>>>(
         () => _i336.PostModelToEntity());
     gh.factory<_i60.Mapper<_i413.PostModel, _i439.PostEntity>>(
@@ -90,6 +88,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i515.PostResponseModelToEntity());
     gh.factory<_i495.PostsDataSource>(
         () => _i105.PostsDataSourceImpl(gh<_i497.NetworkClient>()));
+    gh.factory<_i603.AddItemDataSource>(() => _i390.AddItemLocalDataSourceImpl(
+        gh<_i979.Box<_i669.PostLocalModel>>()));
     gh.factory<_i858.PostsDetailsRepository>(
         () => _i127.PostsDetailsRepositoryImpl(
               gh<_i473.PostDetailsDataSource>(),
