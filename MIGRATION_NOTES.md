@@ -7,6 +7,8 @@ Executed fvm flutter pub get to resolve and fetch updated dependencies.
 
 - Updated ThemeData usage by replacing deprecated bodyText1 and bodyText2 with bodyLarge and bodyMedium from the TextTheme.
 
+- ElevatedButton.styleFrom had to set backgroundColor for button color
+
 ### Native Android Configuration (Based on Flutter Migration Guide)
 According to Flutter Migration Guide(https://tinyurl.com/5c9rsr79)
 

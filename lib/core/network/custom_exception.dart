@@ -1,5 +1,7 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class CustomException implements Exception {
   final String? errorCode;
@@ -58,6 +60,18 @@ class CustomException implements Exception {
     }
   }
 
+  factory CustomException.fromHiveError(dynamic e) {
+    if (e is HiveError) {
+      return CustomException(message: e.message);
+    } else if (e is FileSystemException) {
+      return CustomException(message: e.message);
+    } else if (e is TypeError) {
+      return CustomException(
+          message: "Type error: Possible type mismatch or missing adapter");
+    } else {
+      return CustomException(message: e.toString());
+    }
+  }
   @override
   String toString() => message;
 }

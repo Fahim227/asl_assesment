@@ -1,9 +1,8 @@
+import 'package:asl_assesment/core/utils/app_colors.dart';
 import 'package:asl_assesment/core/widgets/common_input_field.dart';
 import 'package:asl_assesment/features/items_list/presentation/bloc/posts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:asl_assesment/core/utils/app_colors.dart';
 
 import '../widget/post_tile.dart';
 
@@ -17,17 +16,22 @@ class AllPostedItemsPage extends StatefulWidget {
 class _AllItemsPageState extends State<AllPostedItemsPage> {
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "All Posts",
-          style: TextStyle(fontSize: 16),
         ),
+        backgroundColor: primaryColor,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () => Navigator.pushNamed(context, "/add_item"),
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       body: Column(
         children: [
