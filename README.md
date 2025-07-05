@@ -36,7 +36,7 @@ fvm flutter pub get
 make runner-build
 ```
 
-2. ***Project Architecture***
+### Project Architecture
 Used Clean Architecture in this project where each feature seperated and layered from api call to user render.
  
 - Data Layer: contains api call data sources, models and repository implementation
@@ -52,31 +52,24 @@ Used Clean Architecture in this project where each feature seperated and layered
 
  - Updating the UI reactively via state changes
 
-### Migration Approach:
- - updated flutter to latest version(3.32.0) using fvm
- - Run 'fvm flutter pub get' 
- - found error in ThemeData TextTheme bodyText1 and bodyText2 was depricated
- - native android configuration issue fix according to Flutter Migration Guide(https://tinyurl.com/5c9rsr79):
-    - first changed in settings.gradle where major configs from build.gradle swtiched to settings.gradle
-    - Then updated distribution gradle verion to 8.4 in gradle-wrapper.properties 
-    - Then buildScript removed from 'android/build.gradle'
-    - In 'app/build.gradle' Updated JavaVersion to 17 and added kotlinOptions  with jvmTarget to 17
 
-### Migration Approach
+## Migration Approach
 Upgraded Flutter to the latest stable version (3.32.0) using FVM to ensure consistent version control across environments.
 
 Executed fvm flutter pub get to resolve and fetch updated dependencies.
 
-## Flutter Codebase Migration
+1. Flutter Codebase Migration
 
 - Updated ThemeData usage by replacing deprecated bodyText1 and bodyText2 with bodyLarge and bodyMedium from the TextTheme.
 
-# Native Android Configuration (Based on Flutter Migration Guide)
-Reorganized Gradle configurations:
+### Native Android Configuration (Based on Flutter Migration Guide)
+According to Flutter Migration Guide(https://tinyurl.com/5c9rsr79)
+
+#### Reorganized Gradle configurations:
 
 - Moved key configurations from android/build.gradle to android/settings.gradle as per new project structure guidelines.
 
-# Toolchain and compatibility updates:
+####  Toolchain and compatibility updates:
 
 - Upgraded Gradle distribution to 8.4 in gradle-wrapper.properties.
 
